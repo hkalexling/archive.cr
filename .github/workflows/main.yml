@@ -18,6 +18,7 @@ jobs:
       run: apk add --no-cache libarchive-dev
     - name: Test
       run: crystal spec
-    - name: Test static build
+    - name: Install static libraries
       run: apk add --no-cache libarchive-static acl-static expat-static zstd-static lz4-static bzip2-static
+    - name: Test static build
       run: crystal build --static --release src/archive.cr
