@@ -1,4 +1,8 @@
-@[Link("archive")]
+{% if flag?(:static) %}
+  @[Link(ldflags: "`pkg-config libarchive --libs --static`")]
+{% else %}
+  @[Link(ldflags: "`pkg-config libarchive --libs`")]
+{% end %}
 lib LibArchive
   type Archive = Void*
   type ArchiveEntry = Void*

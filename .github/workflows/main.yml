@@ -11,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: crystallang/crystal:0.34.0-alpine
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: apk add --no-cache libarchive-dev
     - name: Test
       run: crystal spec
+    - name: Test static build
+      run: apk add --no-cache libarchive-static acl-static expat-static zstd-static lz4-static bzip2-static
+      run: crystal build --static --release src/archive.cr
