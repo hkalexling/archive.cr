@@ -1,0 +1,9 @@
+name: archive
+version: 0.1.0
+
+authors:
+  - Alex Ling <hkalexling@gmail.com>
+
+crystal: 0.34.0
+
+license: MIT
