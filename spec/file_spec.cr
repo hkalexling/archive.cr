@@ -50,11 +50,9 @@ describe Archive::File do
     end
   end
 
-  it "raises when the entry filenames contain utf8 characters" do
+  it "handles archives with utf8 entry filenames" do
     Archive::File.open "spec/asset/utf8.cbr" do |f|
-      expect_raises Archive::Error do
-        f.entries
-      end
+      f.entries[0].filename.should eq "😄"
     end
   end
 end

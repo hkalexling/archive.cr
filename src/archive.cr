@@ -69,7 +69,7 @@ module Archive
         raise?
 
         size = LibArchive.archive_entry_size e
-        char_ptr = LibArchive.archive_entry_pathname e
+        char_ptr = LibArchive.archive_entry_pathname_utf8 e
         if char_ptr == NULL
           raise Error.new "Failed to retrieve entry filename. Got a null pointer."
         end

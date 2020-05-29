@@ -23,7 +23,7 @@ lib LibArchive
 
   fun archive_error_string(a : Archive) : LibC::Char*
 
-  fun archive_entry_pathname(e : ArchiveEntry) : LibC::Char*
+  fun archive_entry_pathname_utf8(e : ArchiveEntry) : LibC::Char*
   fun archive_entry_size(e : ArchiveEntry) : LibC::SizeT
   fun archive_entry_stat(e : ArchiveEntry) : LibC::Stat*
 end
