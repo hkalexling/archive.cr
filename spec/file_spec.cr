@@ -55,4 +55,20 @@ describe Archive::File do
       f.entries[0].filename.should eq "😄"
     end
   end
+
+  describe "#check" do
+    it "handles normal archives" do
+      Archive::File.open "spec/asset/test.cbr" do |f|
+        f.check
+      end
+    end
+
+    it "raises on solid archives" do
+      Archive::File.open "spec/asset/solid.cbr" do |f|
+        expect_raises Archive::Error do
+          f.check
+        end
+      end
+    end
+  end
 end

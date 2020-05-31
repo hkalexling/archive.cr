@@ -149,5 +149,18 @@ module Archive
       end
       data
     end
+
+    # Attemps to get read the first file entry. Raises if it failes.
+    #   This is useful when checking the integrity of the archive.
+    def check
+      reader do |r|
+        r.entries do |e|
+          next unless e.info.file?
+          e.file = self
+          e.read
+          break
+        end
+      end
+    end
   end
 end
