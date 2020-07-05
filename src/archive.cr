@@ -26,7 +26,7 @@ module Archive
 
   class Entry
     getter filename : String
-    getter size : UInt64
+    getter size : LibC::SizeT
     getter info : Crystal::System::FileInfo
 
     property file : File?
