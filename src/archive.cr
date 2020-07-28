@@ -51,8 +51,7 @@ module Archive
     end
 
     def close
-      @status = LibArchive.archive_read_free @a
-      raise?
+      LibArchive.archive_read_free @a
     end
 
     def self.open(filename : String, block_size = 10240, &)
@@ -126,7 +125,8 @@ module Archive
     private def reader(&)
       r = Reader.new @filename, @block_size
       yield r
-      r.close
+    ensure
+      r.close unless r.nil?
     end
 
     def entries
